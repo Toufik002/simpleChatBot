@@ -10,7 +10,7 @@ CHAT_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
 
 APP_URL = "http://localhost"
-APP_NAME = "SchoolChatbot"
+APP_NAME = "ToufikChatbot"
 
 # MODEL 
 MODEL_ID = "openai/gpt-3.5-turbo"  
