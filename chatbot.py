@@ -46,37 +46,35 @@ class SimpleBot:
         headers = {
             "Authorization": f"Bearer {self.token}",
             "Content-Type": "application/json",
-            "HTTP-Referer": config.APP_URL,
-            "X-Title": config.APP_NAME,
         }
 
         payload = {
-            "model": config.MODEL_ID,
-            "messages": self.build_payload_messages(),
-            "temperature": config.TEMP,
-            "max_tokens": config.MAX_REPLY_TOKENS,
-        }
+        "model": config.MODEL_ID,
+        "messages": self.build_payload_messages(),
+        "temperature": config.TEMP,
+        "max_tokens": config.MAX_REPLY_TOKENS,
+    }
 
-        try:
-            resp = requests.post(
-                config.CHAT_ENDPOINT,
-                headers=headers,
-                json=payload,
-                timeout=30,
-            )
+    try:
+        resp = requests.post(
+            config.CHAT_ENDPOINT,
+            headers=headers,
+            json=payload,
+            timeout=30,
+        )
 
-            if resp.status_code != 200:
-                return f"HTTP {resp.status_code} - {resp.text}"
+        if resp.status_code != 200:
+            return f"HTTP {resp.status_code} - {resp.text}"
 
-            data = resp.json()
-            text = data["choices"][0]["message"]["content"]
+        data = resp.json()
+        text = data["choices"][0]["message"]["content"]
 
-            self.add_bot_text(text)
-            return text
+        self.add_bot_text(text)
+        return text
 
-        except requests.exceptions.Timeout:
-            return "Error: timeout"
-        except requests.exceptions.ConnectionError:
-            return "Error: connection"
-        except Exception as ex:
-            return f"Error: {str(ex)}"
+    except requests.exceptions.Timeout:
+        return "Error: timeout"
+    except requests.exceptions.ConnectionError:
+        return "Error: connection"
+    except Exception as ex:
+        return f"Error: {str(ex)}"
