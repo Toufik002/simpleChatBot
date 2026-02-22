@@ -8,7 +8,9 @@ load_dotenv()
 OPENROUTER_TOKEN = os.getenv("OPENROUTER_API_KEY", "put-your-key-here")
 CHAT_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
-
+# optional (recommended by OpenRouter)
+APP_URL = "http://localhost"
+APP_NAME = "SchoolChatbot"
 
 # --- MODEL ---
 MODEL_ID = "openai/gpt-3.5-turbo"  # example on OpenRouter
