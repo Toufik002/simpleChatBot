@@ -6,7 +6,7 @@ def main():
     print("Type /quit to exit.")
 
     while True:
-        user_text = input("You: ").strip()
+        user_text = input("Toufik: ").strip()
         if not user_text:
             continue
         if user_text.lower() in ["/quit", "/exit"]:
